@@ -4,6 +4,7 @@ import android.content.Context
 import com.akin.animeson.BuildConfig
 import com.akin.animeson.data.api.AnimeApi
 import com.akin.animeson.repository.AllAnimeRepository
+import com.akin.animeson.repository.UserRepository
 import com.akin.animeson.util.Constant.BASE_URL
 import com.akin.animeson.util.Constant.KEY
 import com.akin.animeson.util.Constant.VALUE
@@ -27,6 +28,10 @@ object AppModule {
     fun provideAnimeRepository(
         api: AnimeApi
     ) = AllAnimeRepository(api)
+    @Provides
+    fun provideUserRepository(
+        api: AnimeApi
+    ) = UserRepository(api)
 
     @Singleton
     @Provides

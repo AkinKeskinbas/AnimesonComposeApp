@@ -20,9 +20,20 @@ class AllAnimeRepository @Inject constructor(
     }
     suspend fun getLastAdd() :Resource<AnimeModel>{
         val response = try {
+
             api.getLastAddAnime(10,"-date")
         }catch (e : Exception){
+            println("repo::${e.message}")
             return Resource.Error(e.message, null)
+        }
+        return Resource.Success(response)
+    }
+    suspend fun getTopTen() :Resource<AnimeModel>{
+        val response = try {
+
+            api.getLastAddAnime(10,"-gunlukIzlenme")
+        }catch (e : Exception){
+            return Resource.Error("repoo::${e.message}", null)
         }
         return Resource.Success(response)
     }

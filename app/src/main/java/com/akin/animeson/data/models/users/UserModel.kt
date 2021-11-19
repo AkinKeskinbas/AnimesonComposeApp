@@ -1,0 +1,36 @@
+package com.akin.animeson.data.models.users
+
+data class UserModel(
+
+    val OneSignalId: Any,
+    val aboneZamani: AboneZamani,
+    val admin: Boolean,
+    val aylikPuan: Int,
+    val banned: Boolean,
+    val bildirimKontrol: Boolean,
+    val bolumIzlendi: Int,
+    val border: String,
+    val coin: Int,
+    val createdAt: String,
+    val device_id: String,
+    val editor: Boolean,
+    val email: String,
+    val gif: String,
+    val gifAlindiMi: Boolean,
+    val hakkinda: String,
+    val hileci: Boolean,
+    val midas: Int,
+    val mod: Boolean,
+    val objectId: String,
+    val oyunhakki: Int,
+    val profilResmi: String,
+    val reklam: Boolean,
+    val sessionToken: String,
+    val spPoint: Int,
+    val stajyermod: Boolean,
+    val statu: Int,
+    val tag: String,
+    val updatedAt: String,
+    val username: String,
+    val uyebilgi: List<String>
+)

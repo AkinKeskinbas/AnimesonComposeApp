@@ -1,11 +1,14 @@
 package com.akin.animeson.ui.homescreen
 
+import android.view.Gravity
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement.Absolute.Center
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,12 +34,18 @@ fun HomeTopCard(
     navController: NavController?
 ) {
     Card(
-        modifier = modifier.fillMaxWidth().fillMaxHeight(0.5f),
+        modifier = modifier
+            .fillMaxWidth()
+            .height(500.dp),
         shape = RoundedCornerShape(15.dp),
         elevation = 5.dp
 
     ) {
-        Box(modifier = Modifier.height(200.dp).fillMaxWidth()) {
+        Box(
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+        ) {
             val painter = rememberImagePainter(
                 data = imageUrl,
                 builder = {
@@ -67,10 +76,37 @@ fun HomeTopCard(
                     .padding(12.dp),
                 contentAlignment = Alignment.BottomStart
             ) {
-                Text(modifier = Modifier.fillMaxWidth(),text = title, style = TextStyle(Color.White, fontSize = 32.sp),textAlign = TextAlign.Center)
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
+                    Button(
+                        onClick = { println("clicked") },
+                        shape = CircleShape,
+
+
+
+                        ) {
+                        Text(text = "Keşfet")
+                        Alignment.Center
+
+
+                    }
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = title,
+                        style = TextStyle(Color.White, fontSize = 32.sp),
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+
             }
+
         }
     }
+
 
 }
 

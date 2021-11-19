@@ -106,4 +106,10 @@ dependencies {
     //parse
     implementation('com.parse:parse-android:1.15.7')
 
+    //lottie
+    implementation "com.airbnb.android:lottie-compose:4.2.1"
+
+    //statusBar
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.20.2"
+
 }

@@ -5,6 +5,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.akin.animeson.R
+import com.akin.animeson.ui.Screens
 import kotlinx.coroutines.delay
 
 @Composable
@@ -39,14 +41,14 @@ fun SplashScreen(navController: NavController) {
             )
         )
         delay(3000L)
-        navController.navigate("animeson_home_screen")
+        navController.navigate(Screens.HomeScreen.route)
     }
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
         Column {
             Text(
                 text = "Animeson",
                 style = TextStyle(
-                    color = Color.White,
+                    color = MaterialTheme.colors.primary,
                     fontSize = 32.sp,
                     textAlign = TextAlign.Center
                 )

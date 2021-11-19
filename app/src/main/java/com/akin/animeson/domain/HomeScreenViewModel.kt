@@ -15,28 +15,50 @@ class HomeScreenViewModel @Inject constructor(
     private val repository: AllAnimeRepository
 ) : ViewModel() {
 
-    var animeList = mutableStateOf<List<Result>>(listOf())
+    var lastAddAnimeList = mutableStateOf<List<Result>>(listOf())
+    var topTenAnimeList = mutableStateOf<List<Result>>(listOf())
     var errorMessage = mutableStateOf("")
     var isLoading = mutableStateOf(false)
 
     init {
-        getAllAnime()
+        getLastAddAnime()
+        getTopTenAnime()
     }
 
-    private fun getAllAnime(){
+    private fun getLastAddAnime(){
 
         viewModelScope.launch {
             isLoading.value = true
             when(val result = repository.getLastAdd()){
                 is Resource.Error ->{
-                    println(result.message)
+
+                    println("HomeScreenError::${result.message}")
+                    errorMessage.value = result.message!!
+                    isLoading.value = true
+                }
+                is Resource.Success->{
+                    lastAddAnimeList.value = result.data!!.results
+                    errorMessage.value = ""
+                    isLoading.value = false
+                }
+
+
+            }
+
+        }
+    }
+    private fun getTopTenAnime(){
+
+        viewModelScope.launch {
+            isLoading.value = true
+            when(val result = repository.getTopTen()){
+                is Resource.Error ->{
+                    println("HomeScreenError::${result.message}")
                     errorMessage.value = result.message!!
                     isLoading.value = false
                 }
                 is Resource.Success->{
-                    println(result)
-                    animeList.value = result.data!!.results
-                    //println(animeList.value)
+                    topTenAnimeList.value = result.data!!.results
                     errorMessage.value = ""
                     isLoading.value = false
                 }
