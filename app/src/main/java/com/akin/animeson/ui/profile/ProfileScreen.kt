@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ProfileScreen(){
     Box(modifier = Modifier.fillMaxSize()){
+        println("test")
         Text(text ="Profile Screen",style = TextStyle(color = MaterialTheme.colors.primaryVariant,fontSize = 32.sp) )
     }
 }

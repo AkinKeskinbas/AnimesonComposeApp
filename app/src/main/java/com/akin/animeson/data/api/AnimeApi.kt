@@ -1,13 +1,17 @@
 package com.akin.animeson.data.api
 
+import com.akin.animeson.data.Resource
 import com.akin.animeson.data.models.AnimeModel
+import com.akin.animeson.data.models.Result
 import com.akin.animeson.data.models.users.UserModel
+import com.akin.animeson.data.models.users.UserSignupModel
+import com.akin.animeson.util.Constant.BASE_AUTH_URL
 import com.google.gson.JsonObject
+import okhttp3.RequestBody
 import org.json.JSONObject
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.PUT
-import retrofit2.http.Query
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.http.*
 import java.util.*
 
 interface AnimeApi {
@@ -24,6 +28,11 @@ interface AnimeApi {
 
     @GET("login")
     suspend fun logIn() : UserModel
+
+    @POST(BASE_AUTH_URL)
+    suspend fun signUp(
+        @Body body:JSONObject
+    ) : UserSignupModel
 
     @GET("users")
     suspend fun getUser() : UserModel

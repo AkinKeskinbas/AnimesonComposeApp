@@ -16,11 +16,13 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.akin.animeson.domain.HomeScreenViewModel
+import com.akin.animeson.domain.UserViewModel
 import com.akin.animeson.nav_graph.SetupNavGraph
 import com.akin.animeson.ui.BottomBar
 import com.akin.animeson.ui.Screens
 import com.akin.animeson.ui.theme.AnimesonComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
+import org.json.JSONObject
 
 
 @AndroidEntryPoint
@@ -32,6 +34,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             AnimesonComposeTheme {
                 val viewModel: HomeScreenViewModel = hiltViewModel()
+                val userViewModel: UserViewModel = hiltViewModel()
+                val body : JSONObject = JSONObject()
+                body.accumulate("username","kurek1313131")
+                body.accumulate("password","kurek")
+                body.accumulate("email","kurek@gmail.com")
+                userViewModel.signUpUser(body = body)
                 val navController = rememberNavController()
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route

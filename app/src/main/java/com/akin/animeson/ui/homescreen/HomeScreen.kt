@@ -17,13 +17,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.akin.animeson.domain.HomeScreenViewModel
 import com.akin.animeson.ui.Screens
 import com.akin.animeson.ui.theme.Roboto
 
 @ExperimentalMaterialApi
 @Composable
-fun HomeScreen(viewModel: HomeScreenViewModel,navController:NavController){
+fun HomeScreen(navController : NavController,viewModel: HomeScreenViewModel){
+
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         Box(
             modifier = Modifier
@@ -62,7 +64,6 @@ fun HomeScreen(viewModel: HomeScreenViewModel,navController:NavController){
                         episode = (item.Bolumler.size+1).toString()
                     )
                 }
-
 
             }
         }

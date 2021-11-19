@@ -9,6 +9,7 @@ import com.akin.animeson.data.models.users.UserModel
 import com.akin.animeson.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import javax.inject.Inject
 
 @HiltViewModel
@@ -39,6 +40,29 @@ class UserViewModel @Inject constructor(
 
 
             }
+        }
+    }
+    fun signUpUser(body:JSONObject){
+        viewModelScope.launch {
+            isLoading.value = true
+            when(val result = userRepository.signUpUser(body = body)){
+                is Resource.Error ->{
+                    println("SignupScreenError::${result.message}")
+
+                    errorMessage.value = result.message!!
+                    isLoading.value = false
+                }
+                is Resource.Success->{
+
+                    println(result.data?.sessionToken)
+                    //println(animeList.value)
+                    errorMessage.value = ""
+                    isLoading.value = false
+                }
+
+
+            }
+
         }
     }
 }

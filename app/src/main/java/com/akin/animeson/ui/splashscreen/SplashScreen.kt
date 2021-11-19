@@ -20,13 +20,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.akin.animeson.R
 import com.akin.animeson.ui.HOME_GRAPH_ROUTE
 import com.akin.animeson.ui.Screens
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navController: NavController) {
+fun SplashScreen( navController : NavController) {
+
     val scale = remember {
         Animatable(0f)
 
@@ -42,7 +45,7 @@ fun SplashScreen(navController: NavController) {
             )
         )
         delay(3000L)
-        println(navController.currentDestination)
+
         navController.popBackStack()
         navController.navigate(Screens.HomeScreen.route)
     }

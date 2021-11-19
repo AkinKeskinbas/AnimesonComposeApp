@@ -16,12 +16,13 @@ import com.akin.animeson.ui.HOME_GRAPH_ROUTE
 import com.akin.animeson.ui.Screens
 import com.akin.animeson.ui.detailscreen.DetailScreen
 import com.akin.animeson.ui.homescreen.HomeScreen
+import com.akin.animeson.ui.profile.ProfileScreen
 import com.akin.animeson.ui.splashscreen.SplashScreen
 
 @ExperimentalMaterialApi
 
 fun NavGraphBuilder.HomeNavGraph(
-    navController: NavHostController,
+    navController: NavController,
     viewModel: HomeScreenViewModel
 ) {
     navigation(
@@ -30,8 +31,7 @@ fun NavGraphBuilder.HomeNavGraph(
     ) {
         composable(route = Screens.SplashScreen.route) {
             Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                SplashScreen(navController = navController)
-
+                SplashScreen(navController)
 
             }
 
@@ -39,7 +39,7 @@ fun NavGraphBuilder.HomeNavGraph(
         composable(route = Screens.HomeScreen.route) {
 
             if (!viewModel.isLoading.value) {
-                HomeScreen(viewModel = viewModel, navController = navController)
+                HomeScreen(viewModel = viewModel,navController = navController)
 
             } else {
                 Box(modifier = Modifier.fillMaxSize(), Alignment.BottomCenter) {
@@ -65,5 +65,6 @@ fun NavGraphBuilder.HomeNavGraph(
             DetailScreen(id = returnAnimeId!!)
 
         }
+
     }
 }

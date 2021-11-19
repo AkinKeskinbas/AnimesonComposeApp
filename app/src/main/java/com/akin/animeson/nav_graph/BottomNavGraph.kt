@@ -1,6 +1,7 @@
 package com.akin.animeson.nav_graph
 
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -14,7 +15,7 @@ import com.akin.animeson.ui.profile.ProfileScreen
 
 @ExperimentalMaterialApi
 fun NavGraphBuilder.BottomNavGraph(
-    navController: NavHostController,
+    navController: NavController,
     viewModel: HomeScreenViewModel
 ){
     navigation(
@@ -23,7 +24,7 @@ fun NavGraphBuilder.BottomNavGraph(
 
     ){
         composable(route = BottomBarScreens.Home.route) {
-            HomeScreen(viewModel =viewModel , navController = navController)
+            HomeScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = BottomBarScreens.Profile.route) {
             ProfileScreen()

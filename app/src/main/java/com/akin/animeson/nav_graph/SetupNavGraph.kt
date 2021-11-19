@@ -21,8 +21,8 @@ fun SetupNavGraph(
         route = ROOT_GRAPH_ROUTE
     ) {
 
-        HomeNavGraph(navController = navController, viewModel)
-        BottomNavGraph(navController = navController, viewModel = viewModel)
+        HomeNavGraph(navController, viewModel)
+        BottomNavGraph( viewModel = viewModel,navController = navController)
 
     }
 }
