@@ -52,12 +52,14 @@ fun HomeScreen(viewModel: HomeScreenViewModel,navController:NavController){
                         .fillMaxWidth(0.4f)
                         .padding(16.dp)
                 ) {
+
                     HomeCard(
                         imageUrl = item.ResimUrl,
                         title = item.DiziAdi,
                         contentDesc = item.objectId,
                         navController = navController,
-                        animeId = item.objectId
+                        animeId = item.objectId,
+                        episode = (item.Bolumler.size+1).toString()
                     )
                 }
 
@@ -84,7 +86,8 @@ fun HomeScreen(viewModel: HomeScreenViewModel,navController:NavController){
                         title = item.DiziAdi,
                         contentDesc = item.objectId,
                         navController = navController,
-                        animeId = item.objectId
+                        animeId = item.objectId,
+                        episode = null
                     )
                 }
 

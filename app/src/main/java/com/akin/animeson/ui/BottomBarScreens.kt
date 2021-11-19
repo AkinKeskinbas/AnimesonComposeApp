@@ -1,16 +1,20 @@
 package com.akin.animeson.ui
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class BottomBarScreens(
     val route: String,
     val title: String,
-    val icon: ImageVector
+    val icon: ImageVector,
+
+
 ){
+
     object Home : BottomBarScreens(
         route = Screens.HomeScreen.route,
         title = "Home",
@@ -21,10 +25,15 @@ sealed class BottomBarScreens(
         title = "Profile",
         icon = Icons.Default.Person
     )
-    object Settings : BottomBarScreens(
-        route = "settings",
-        title = "Settings",
-        icon = Icons.Default.Settings
+    object Search : BottomBarScreens(
+        route = "search",
+        title = "Search",
+        icon = Icons.Default.Search
+    )
+    object Chat : BottomBarScreens(
+        route = "chat",
+        title = "Chat",
+        icon = Icons.Default.Chat
     )
 
 }

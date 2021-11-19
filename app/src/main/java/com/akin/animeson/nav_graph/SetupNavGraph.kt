@@ -1,5 +1,6 @@
 package com.akin.animeson.nav_graph
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -19,8 +20,9 @@ fun SetupNavGraph(
         startDestination = HOME_GRAPH_ROUTE,
         route = ROOT_GRAPH_ROUTE
     ) {
-        HomeNavGraph(navController = navController,viewModel)
-        BottomNavGraph(navController = navController, viewModel =viewModel )
+
+        HomeNavGraph(navController = navController, viewModel)
+        BottomNavGraph(navController = navController, viewModel = viewModel)
 
     }
 }

@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.akin.animeson.R
+import com.akin.animeson.ui.HOME_GRAPH_ROUTE
 import com.akin.animeson.ui.Screens
 import kotlinx.coroutines.delay
 
@@ -41,6 +42,8 @@ fun SplashScreen(navController: NavController) {
             )
         )
         delay(3000L)
+        println(navController.currentDestination)
+        navController.popBackStack()
         navController.navigate(Screens.HomeScreen.route)
     }
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {

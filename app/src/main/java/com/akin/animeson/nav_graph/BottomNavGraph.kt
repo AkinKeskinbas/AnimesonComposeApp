@@ -28,7 +28,10 @@ fun NavGraphBuilder.BottomNavGraph(
         composable(route = BottomBarScreens.Profile.route) {
             ProfileScreen()
         }
-        composable(route = BottomBarScreens.Settings.route) {
+        composable(route = BottomBarScreens.Search.route) {
+            // SettingsScreen()
+        }
+        composable(route = BottomBarScreens.Chat.route) {
             // SettingsScreen()
         }
     }

@@ -2,8 +2,8 @@ package com.akin.animeson.ui
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -12,11 +12,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 
 
 @Composable
-fun BottomBar(navController: NavHostController) {
+fun BottomBar(navController: NavHostController ) {
+
     val screens = listOf(
         BottomBarScreens.Home,
         BottomBarScreens.Profile,
-        BottomBarScreens.Settings,
+        BottomBarScreens.Search,
+        BottomBarScreens.Chat,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -31,6 +33,7 @@ fun BottomBar(navController: NavHostController) {
         }
     }
 }
+
 @Composable
 fun RowScope.AddItem(
     screen: BottomBarScreens,
@@ -40,13 +43,16 @@ fun RowScope.AddItem(
     BottomNavigationItem(
         label = {
             Text(text = screen.title)
+
         },
+
         icon = {
             Icon(
                 imageVector = screen.icon,
                 contentDescription = "Navigation Icon"
             )
         },
+
         selected = currentDestination?.hierarchy?.any {
             it.route == screen.route
         } == true,
@@ -54,6 +60,7 @@ fun RowScope.AddItem(
         onClick = {
             navController.navigate(screen.route) {
                 popUpTo(navController.graph.findStartDestination().id)
+
                 launchSingleTop = true
             }
         }

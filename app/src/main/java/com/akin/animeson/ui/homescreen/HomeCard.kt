@@ -30,6 +30,7 @@ import com.akin.animeson.ui.Screens
 fun HomeCard(
     imageUrl: String,
     title: String,
+    episode: String?,
     modifier: Modifier = Modifier,
     contentDesc: String,
     navController: NavController?,
@@ -78,7 +79,11 @@ fun HomeCard(
                     .padding(12.dp),
                 contentAlignment = Alignment.BottomStart
             ) {
-                Text(text = title, style = TextStyle(Color.White, fontSize = 16.sp))
+                Column {
+                    Text(text = title, style = TextStyle(Color.White, fontSize = 16.sp))
+                    Text(text ="Bölüm: ${episode.toString()}" , style = TextStyle(Color.White, fontSize = 16.sp))
+                }
+
             }
         }
     }
@@ -94,6 +99,7 @@ fun test() {
         navController = null,
         imageUrl = "https://i.pinimg.com/564x/05/06/7b/05067b11f2d8ed9a8454357bf1b0799b.jpg",
         title = "test",
+        episode = "test",
         modifier = Modifier,
         contentDesc = "test",
         animeId = "test"
